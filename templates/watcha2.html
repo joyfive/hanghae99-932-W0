@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="9월 WATCHA 콘텐츠 추천"/>
+    <meta property="og:description" content="9월에 인기있는 WATCHA 콘텐츠를 지금 여기서 만나보세요."/>
+    <meta property="og:image" content="Url"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>9월 WATCHA 콘텐츠 추천</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+
+        }
+
+        body {
+            background-color: #333333;
+        }
+
+        .all-contents {
+            width: 80%;
+            background-color: #333333;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .list-contents {
+            position: absolute;
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 95%;
+
+
+        }
+
+        .table {
+            display: flex;
+            flex-direction: row;
+            margin: 0 0 20px 40px;
+            table-layout: fixed;
+        }
+
+        .logo {
+            width: 100%;
+            min-width: 95%;
+            max-height: 80px;
+        }
+
+        .logo .img {
+            max-height: 60px;
+        }
+
+        .home {
+            max-width: 10%;
+        }
+
+        .home .icon {
+            width: 60px;
+            object-fit: contain;
+            object-position: right;
+            opacity: 0.5;
+            filter: alpha(opacity=50); /* For IE8 and earlier */
+        }
+
+        .home .icon:hover {
+            width: 60px;
+            object-fit: contain;
+            object-position: right;
+            opacity: 1.0;
+            filter: alpha(opacity=100); /* For IE8 and earlier */
+        }
+
+
+        .title {
+            margin-left: 40px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .tab {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        span {
+            color: #FF0559;
+            text-weight: 900;
+        }
+
+        .nav-bar {
+            margin-top: 40px;
+            margin-left: 40px;
+            width: 100%;
+            background-color: black;
+        }
+
+        .nav-item:hover {
+            background-color: #FF0559;
+            border-radius: 10px;
+        }
+
+        .contents-box {
+            margin: 0 0 40px 40px;
+            width: 100%;
+            max-height: 680px;
+            height: 58%;
+            padding: 20px;
+            background-color: #ECECEC;
+            border-radius: 0 0 20px 20px;
+            overflow: auto;
+        }
+
+        .card-title {
+            width: 90%;
+        }
+
+        .card-box {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .card-body .heart {
+            width: 30px;
+            object-fit: contain;
+            object-position: right;
+            opacity: 0.3;
+            filter: alpha(opacity=30); /* For IE8 and earlier */
+        }
+
+        .card-body .heart:hover {
+            width: 30px;
+            object-fit: contain;
+            object-position: right;
+            opacity: 1.0;
+            filter: alpha(opacity=100); /* For IE8 and earlier */
+        }
+
+        .card-body .heart-act{
+            width: 30px;
+            object-fit: contain;
+            object-position: right;
+        }
+
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            line-height: 2.5;
+            background-color: #121212;
+            color: #cdcdcd;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .ott-box {
+            overflow: hidden;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            show_list();
+        });
+
+        function show_list() {
+            $('#movie-list').empty()
+            $.ajax({
+                type: "GET",
+                url: "/watcha",
+                data: {},
+                success: function (response) {
+                    let watcha = response['movies']
+                    for (let i = 0; i < watcha.length; i++) {
+                        let title = watcha[i]['title']
+                        let desc = watcha[i]['desc']
+                        let tag = watcha[i]['tag[0,1]']
+                        let img = watcha[i]['img']
+                        let like = watcha[i]['like']
+
+                        let temp_html = `<div class="col">
+                                            <div class="card h-40">
+                                                <img src="${img}"
+                                                     class="card-img-top" alt="{${title}">
+                                                <div class="card-body">
+                                                    <div class="card-box">
+                                                        <h5 class="card-title">${title}</h5><img src="/static/img/search-heart.svg" href="#" class="heart"></div>
+                                                    <p class="card-text">${desc}</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <small class="text-muted ott-box">
+                                                        <button type="button" class="btn btn-outline-primary btn-sm">${tag[0]}</button>
+                                                        <button type="button" class="btn btn-outline-success btn-sm">${tag[1]}</button>
+                                                </div>
+                                            </div>
+                                        </div>`
+                        $('#movie-list').append(temp_html)
+                    }
+
+                }
+
+            })
+        }
+
+        // $(document).ready(function () {
+        //     window.location.reload()
+        //     show_tab1()
+        // });
+        //
+        // function show_tab1() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "http://spartacodingclub.shop/sparta_api/weather/seoul",
+        //         data: {},
+        //         success: function (response) {
+        //             $('#temp').text(response['temp'])
+        //         }
+        //     })
+        // }
+    </script>
+
+<body>
+<div class="all-contents">
+    <div class="list-contents">
+        <div class="table">
+            <div class="logo">
+                <img class="img"
+                     src="https://upload.wikimedia.org/wikipedia/commons/b/b8/%EC%99%93%EC%B1%A0_%EB%A1%9C%EA%B3%A0_2021.png"
+                     alt="WATCHA">
+            </div>
+            <div class="home">
+                <a href="../">
+                    <img src="/static/img/house-heart.svg" class="icon">
+                </a>
+            </div>
+        </div>
+
+    <div>
+        <h1 class="title">
+            지금 고민중인 그 콘텐츠, <span>왓챠</span>에서 만나보세요!
+        </h1>
+    </div>
+
+    <div class="nav-bar">
+        <nav class="navbar navbar-dark bg-dark">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-current="page" href="https://watcha.com/staffmades/gsm69G5nlN">Disabled</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="contents-box">
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="movie-list">
+            <div class="col">
+                <div class="card h-40">
+                    <img src="https://an2-img.amz.wtchn.net/image/v2/hIRH_AjGj97Vxnfzlj4YSw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5ETXllRFkwTUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5qQXhNREV6TkRFd01qRTFOamd5T0RRaWZRLmxFejVaWE5wNTlnTFowSEVsMTFlaS02N0I4dGpkYTY0UnU3X2Q0TGxtblE"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="card-box">
+                            <h5 class="card-title">Card title</h5><img src="static/img/search-heart.svg" href="#" class="heart"></div>
+                        <p class="card-text">This is a wider card with supporting text below as... </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted ott-box">
+                            <button type="button" class="btn btn-outline-primary btn-sm">Primary</button>
+                            <button type="button" class="btn btn-outline-success btn-sm">Success</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    <div class="footer">
+        <div class="bottom-bar">
+        Copyright 2022. hang-hae99 9th team 32. all rights reserved.
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>comment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Jua', sans-serif;
+            color: white;
+        }
+
+        .mypost {
+            border-radius: 10px;
+            background-color: white;
+            width: 95%;
+            max-width: 500px;
+            height: 98vh;
+            margin: 1vh 1vh auto auto;
+            box-shadow: 0px 0px 3px 0px white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .mytitle {
+            background-color: #333333;
+            /*border-radius: 10px;*/
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            /*margin: 10px 10px 0px 10px;*/
+            height: 100px;
+            max-height: 100px;
+            min-height: 100px;
+            width: 100%;
+            /*max-width: 480px;*/
+            padding-left: 10px;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .mycards {
+            margin-bottom: 10px;
+        }
+        .card {
+            background-color: #333333;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .card-body {
+            width: 50%;
+            margin-bottom: 10px;
+        }
+        .buttongrup {
+            height: 50px;
+            margin-top: 5px;
+            margin-right: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .c2 {
+            width: 25px;
+            height: 30px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            border: hidden;
+            cursor: pointer;
+            overflow: hidden;
+            margin-top: -1.1px;
+            padding: 0;
+        }
+
+        .box {
+            height: 70%;
+            overflow: auto;
+            width: 95%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .text-box {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            padding : 1% 1% 10px 1%;
+        }
+        .c3{
+            width: 90%;
+            margin-left: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 20px;
+            background-color: #333333;
+            border-radius: 10px
+        }
+        .c3:hover {
+            border-color: white;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            show_comment()
+        });
+        function show_comment() {
+            $.ajax({
+                type: "GET",
+                url: '/comment',
+                data: {},
+                success: function (response) {
+                    let rows = response['comment']
+                    for (let i = 0; i < rows.length; i ++){
+                        let num = rows[i]['num']
+                        let name = rows[i]['name']
+                        let comment = rows[i]['comment']
+                        let done = rows[i]['done']
+
+                        let temp_html = ``
+                        if (done == 0) {
+                            temp_html = `<div class="card">
+                                            <div class="card-body">
+                                                <blockquote class="blockquote mb-0">
+                                                    <p>${comment}</p>
+                                                    <footer class="blockquote-footer">${name}</footer>
+                                                </blockquote>
+                                            </div>
+                                            <div class="buttongrup">
+                                        </button>
+                                            <button onclick="q2(${num})" type="button" class="c2" id="btn-del">
+                                                <svg style="width: 20px; height: 20px">
+                                                    <path xmlns="http://www.w3.org/2000/svg" style="stroke:none;fill-rule:nonzero;fill:white;fill-opacity:1;" d="M 5 15.832031 C 5 16.753906 5.746094 17.5 6.667969 17.5 L 13.332031 17.5 C 14.253906 17.5 15 16.753906 15 15.832031 L 15 5.832031 L 5 5.832031 Z M 15.832031 3.332031 L 12.917969 3.332031 L 12.082031 2.5 L 7.917969 2.5 L 7.082031 3.332031 L 4.167969 3.332031 L 4.167969 5 L 15.832031 5 Z M 15.832031 3.332031 "/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                      </div>
+                            </div>`
+                        } $('#mycomment').append(temp_html)
+                    }
+                }
+            });
+        }
+        function q3() {
+            let name = $('#name').val()
+            let comment = $('#comment').val()
+
+
+            if(name == ''){
+                alert('빈칸입니다');
+                return false;
+            }
+            if(comment == ''){
+                alert('빈칸입니다');
+                return false;
+            }
+
+
+            $.ajax({
+                type: "POST",
+                url: "/comment",
+                data: {name_give: name, comment_give: comment},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
+        }
+
+
+        function q2(num) {
+            $.ajax({
+                type: "POST",
+                url: "/comment/del",
+                data: {num_give: num},
+                success: function (response) {
+                    alert(response["msg"])
+                    window.location.reload()
+                }
+            });
+        }
+
+
+    </script>
+
+
+</head>
+<body style="background-color: #333333">
+    <div class="mypost">
+        <div class="mytitle">
+            <h1>comment</h1>
+        </div>
+            <div class="box">
+                <div class="mycards" id="mycomment">
+                </div>
+            </div>
+    <div class="text-box" id="text-box">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" placeholder="url"
+                   style="background-color: #333333; color: white; font-size: 15pt">
+            <label for="floatingInput" style="color: white">nickname</label>
+        </div>
+        <div class="form-floating" style=" background-color: #333333;color: white; border-radius: 10px;">
+                    <textarea class="form-control" placeholder="Leave a commt herene" id="comment"
+                              style="height: 150px; background-color: #333333; color: white; font-size: 15pt"></textarea>
+            <label for="floatingTextarea2">Leave a commt herene</label>
+        </div>
+        <button onclick="q3()" type="button" class="c3">click</button>
+    </div>
+    </div>
+</body>
+</html>

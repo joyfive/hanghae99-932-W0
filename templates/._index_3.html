@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="2022년 9월 기준_지금 뜨는 콘텐츠">
+    <meta property="og:description" content="지금 뜨는 넷플릭스와 왓챠의 콘텐츠를 만나보세요.">
+    <meta property="og:image" content="https://blog.kakaocdn.net/dn/cgvmD7/btqCTwnJGf9/eGtVTar0JLUD4TUyp712Mk/img.jpg">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Rubik+Mono+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+
+        .all {
+            /*background-color: #333333*/
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://assets.nflxext.com/ffe/siteui/vlv3/908077b4-cf0a-43c3-b2c9-435fb990299b/d0ee3fb7-f68f-4bcf-bc7a-70804965e778/KR-ko-20220829-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+            background-position: center;
+            background-size: cover;
+
+
+        }
+
+        .title {
+            /*background-color: white;*/
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 100px 0px gray;
+            margin: 20px auto 0px auto;
+
+            padding: 20px;
+            max-width: 1700px;
+            with: 95%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+
+
+        }
+
+        .title > h1 {
+            font-size: 100px;
+            /*font-family: 'Noto Sans KR', sans-serif;*/
+            font-family: 'Black Han Sans', sans-serif;
+            color: red;
+
+
+        }
+
+        .cardbox1 {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            width: 95%;
+            max-width: 700px;
+            padding-top: 20px;
+            padding-bottom: 40px;
+            display: flex;
+            flex-direction: row;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 3px 0px gray;
+            border-radius: 40px;
+
+
+        }
+
+        .netflix {
+            /*background-color: red;*/
+            margin-top: 20px;
+            /*margin-left: 30px;*/
+            margin-left: auto;
+            margin-right: auto;
+            width: 95%;
+            max-width: 900px;
+
+        }
+
+        .cardbox2 {
+            /*margin: 100px auto;*/
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            width: 95%;
+            max-width: 700px;
+            padding-top: 20px;
+            padding-bottom: 40px;
+            display: flex;
+            flex-direction: row;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 3px 0px gray;
+            border-radius: 40px;
+
+
+        }
+
+        .watcha {
+            /*background-color: green;*/
+            margin-top: 20px;
+            /*margin-right: 30px;*/
+            margin-left: auto;
+            margin-right: auto;
+            width: 95%;
+            max-width: 900px;
+
+        }
+
+        /*.ww {*/
+        /*    max-width: 254px;*/
+        /*    width: 100%;*/
+        /*    max-height: 381px;*/
+        /*    height: 95%;*/
+        /*}*/
+
+        .nn {
+
+            width: 100%;
+            max-height: 284.84px;
+            height: 95%;
+        }
+
+        .card {
+            width: 200px;
+            height: 348px;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+
+        .cwrap {
+            /*margin-left: 10px;*/
+            width: 95%;
+            max-width: 200px;
+            margin-left: 10px;
+
+        }
+
+        .namebox {
+            /*background-color: palevioletred;*/
+            margin: 100px auto 0px auto;
+            width: 95%;
+            max-width: 2100px;
+            max-height: 200px;
+            display: flex;
+            flex-direction: row;
+            font-family: 'Anton', sans-serif;
+        }
+
+        .netflixname {
+            /*background-color: white;*/
+            /*box-shadow: 0px 0px 3px 0px gray;*/
+            /*background-color: rgba(0, 0, 0, 0.5);*/
+            width: 400px;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+        }
+
+        .watchaname {
+            /*background-color: white;*/
+            /*box-shadow: 0px 0px 3px 0px gray;*/
+            /*background-color: rgba(0, 0, 0, 0.5);*/
+            width: 400px;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+        }
+
+        .Nfont {
+
+            /*font-size: 100px;*/
+            /*color: red;*/
+            /*text-align: center;*/
+            /*background: linear-gradient(to left, #F00, #00F);*/
+            /*-webkit-background-clip: text;*/
+            /*-webkit-text-fill-color: transparent;*/
+            /*!*text-shadow: 8px 5px black;*!*/
+             font-size: 100px;
+            color :#930000;
+             background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 3px 0px gray;
+            border-radius: 20px;
+        }
+
+        .Nfont:hover {
+            font-size: 100px;
+            color :#ffffff;
+             background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 100px 0px white;
+            border-radius: 20px;
+        }
+
+        .Wfont:hover {
+            font-size: 100px;
+            color :#ffffff;
+             background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 100px 0px white;
+            border-radius: 20px;
+        }
+
+
+        .Wfont {
+            font-size: 100px;
+            color :#FF0559;
+             background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 3px 0px gray;
+            border-radius: 20px;
+        }
+
+
+
+
+        .rank {
+            position: absolute;
+            font-size: 80px;
+            top: -40px;
+            left: -30px;
+            font-family: 'Bowlby One', cursive;
+            color: white;
+            /*text-shadow: 8px 5px black;*/
+        }
+
+
+        .mainbox{
+            display: flex;
+            flex-direction: row;
+
+            justify-content: center;
+        }
+
+
+        .boxwrap {
+            max-width: 2100px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-body{
+            height: 64px;
+        }
+        .card{
+            background-color: rgb(0,0,0,0.7);
+            color:white;
+        }
+
+    </style>
+    <script>
+
+        $(document).ready(function () {
+            show_order();
+        });
+
+        function show_order() {
+            $('#ncards').empty()
+            $.ajax({
+                type: 'GET',
+                url: '/wnetflix',
+                data: {},
+                success: function (response) {
+                    let rows = response['norders']
+                    for (let i = 0; i < 9; i++) {
+                        let rank = rows[i]['rank']
+                        let title = rows[i]['title']
+                        let img = rows[i]['img']
+
+                        let temp_html = `<div class="cwrap">
+                                                <div class="col">
+                                                    <div class="card h-100">
+                                                        <img class="nn" src="https://flixpatrol.com${img}"
+                                                             class="card-img-top" alt="..."><span class="rank">${rank}</span>
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">${title}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>`
+                        $('#ncards').append(temp_html)
+                    }
+                    for (let i = 3; i < 10; i++) {
+                        let rank = rows[i]['rank']
+                        let title = rows[i]['title']
+                        let img = rows[i]['img']
+
+                        let temp_html = `<div class="cwrap">
+                                                <div class="col">
+                                                    <div class="card h-100">
+                                                        <img class="nn" src="https://flixpatrol.com${img}"
+                                                             class="card-img-top" alt="..."><span class="rank">${rank}</span>
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">${title}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>`
+                        $('#accard').append(temp_html)
+
+                    }
+
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            show_order2();
+        });
+
+        function show_order2() {
+            $('#wcards').empty()
+            $.ajax({
+                type: 'GET',
+                url: '/wwatcha',
+                data: {},
+                success: function (response) {
+                    let rows = response['worders']
+                    for (let i = 0; i < 9; i++) {
+                        let rank = rows[i]['rank']
+                        let title = rows[i]['title']
+                        let img = rows[i]['img']
+
+                        let temp_html = `<div class="cwrap">
+                                                <div class="col">
+                                                    <div class="card h-100">
+                                                        <img class="ww" src="${img}"
+                                                             class="card-img-top" alt="..."><span class="rank">${rank}</span>
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">${title}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>`
+                        $('#wcards').append(temp_html)
+                    }
+
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            show_comment()
+        });
+
+        function show_comment() {
+            $.ajax({
+                type: "GET",
+                url: '/comment',
+                data: {},
+                success: function (response) {
+                    let rows = response['comment']
+                    for (let i = 0; i < rows.length; i++) {
+                        let num = rows[i]['num']
+                        let name = rows[i]['name']
+                        let comment = rows[i]['comment']
+                        let done = rows[i]['done']
+
+                        let temp_html = ``
+                        if (done == 0) {
+                            temp_html = `<div class="card" style="background-color: #333333; width: 100%; height: 100px;
+                            margin-bottom: 10px; display: flex; flex-direction: row; align-items: flex-start; justify-content: center;">
+                                            <div class="card-body" style="width: 50%; margin-bottom: 10px;">
+                                                <blockquote class="blockquote mb-0">
+                                                    <p>${comment}</p>
+                                                    <footer class="blockquote-footer">${name}</footer>
+                                                </blockquote>
+                                            </div>
+                                            <div class="buttongrup" style="height: 50px; margin-top: 5px; margin-right: 5px;
+                                             display: flex; flex-direction: row; align-items: flex-start; justify-content: center;">
+                                        </button>
+                                            <button onclick="q2(${num})" type="button" class="c2" id="btn-del" style="width: 25px; height: 30px;
+                                                background-color: transparent; background-repeat: no-repeat; border-radius: 10px; border: hidden; cursor: pointer;
+                                                 overflow: hidden; margin-top: -1.1px; padding: 0;">
+                                                <svg style="width: 20px; height: 20px">
+                                                    <path xmlns="http://www.w3.org/2000/svg" style="stroke:none;fill-rule:nonzero;fill:white;fill-opacity:1;" d="M 5 15.832031 C 5 16.753906 5.746094 17.5 6.667969 17.5 L 13.332031 17.5 C 14.253906 17.5 15 16.753906 15 15.832031 L 15 5.832031 L 5 5.832031 Z M 15.832031 3.332031 L 12.917969 3.332031 L 12.082031 2.5 L 7.917969 2.5 L 7.082031 3.332031 L 4.167969 3.332031 L 4.167969 5 L 15.832031 5 Z M 15.832031 3.332031 "/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                      </div>
+                            </div>`
+                        }
+                        $('#mycomment').append(temp_html)
+                    }
+                }
+            });
+        }
+
+        function q3() {
+            let name = $('#name').val()
+            let comment = $('#comment').val()
+
+            if (name == '') {
+                alert('빈칸입니다');
+                return false;
+            }
+            if (comment == '') {
+                alert('빈칸입니다');
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/comment",
+                data: {name_give: name, comment_give: comment},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
+        }
+
+        function q2(num) {
+            $.ajax({
+                type: "POST",
+                url: "/comment/del",
+                data: {num_give: num},
+                success: function (response) {
+                    alert(response["msg"])
+                    window.location.reload()
+                }
+            });
+        }
+
+
+
+    </script>
+</head>
+
+<body class="all">
+
+
+<div class="title">
+    <h1>9월 OTT 콘텐츠 추천</h1>
+</div>
+<div class="namebox">
+    <div class="netflixname">
+        <button onclick="location.href='/netflix'" class="Nfont">NETFLIX</button>
+    </div>
+    <div class="watchaname">
+        <button onclick="location.href='/watcha'" class="Wfont">WATCHA</button>
+    </div>
+</div>
+<div class="mainbox">
+    <div class="boxwrap">
+        <div class="cardbox1">
+            <div class="netflix">
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="ncards">
+                    <div class="cwrap">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
+                                     class="card-img-top" alt="..."><span class="rank">1</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">영화 제목이 들어갑니다</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cwrap">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
+                                     class="card-img-top" alt="..."><span class="rank">2</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">영화 제목이 들어갑니다</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cwrap">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
+                                     class="card-img-top" alt="..."><span class="rank">3</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">영화 제목이 들어갑니다</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cardbox2">
+            <div class="watcha">
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="wcards">
+                    <div class="cwrap">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
+                                     class="card-img-top" alt="..."><span class="rank">1</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">영화 제목이 들어갑니다</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cwrap">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
+                                     class="card-img-top" alt="..."><span class="rank">2</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">영화 제목이 들어갑니다</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cwrap">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
+                                     class="card-img-top" alt="..."><span class="rank">3</span>
+                                <div class="card-body">
+                                    <h5 class="card-title">영화 제목이 들어갑니다</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
