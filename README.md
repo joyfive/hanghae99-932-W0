@@ -67,11 +67,11 @@ HTML / CSS / JavaScript / Python / Flask / mongoDB
 
 (도원)<br>
 배운점 <br>
-
-
+API 요청에 대한 Method 활용
+데이터 삭제 기능
 아쉬운점 <br>
-
-
+JWT을 활용한 로그인 기능
+데이터 수정기능
 (민재)<br>
 배운 점 <br>
 
