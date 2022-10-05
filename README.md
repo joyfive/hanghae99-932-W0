@@ -25,8 +25,10 @@ HTML / CSS / JavaScript / Python / Flask / mongoDB
 
 ## 구현 기능
 
-### 기능 1 : 회원가입 및 로그인
-
+### 기능 1 : 코멘트
+  * 코멘트 작성시 사용자 input값을 API요청하고 POST Method를 활용하여 코멘트 DB에 생성
+  * 생성된 코멘트를 GET Method를 통하여 DB에 저장된 정보를 코멘트 박스에서 조회
+  * 코멘트 삭제시 사용자가 선택한 코멘트정보를 DB에서 삭제
 
 ### 기능 2 : 메인페이지
 #### 1) 리스팅 기능 [GET]method
@@ -66,12 +68,14 @@ HTML / CSS / JavaScript / Python / Flask / mongoDB
 
 
 (도원)<br>
-배운점 <br>
-API 요청에 대한 Method 활용
-데이터 삭제 기능
-아쉬운점 <br>
-JWT을 활용한 로그인 기능
-데이터 수정기능
+<b> 배운 점</b>
+  * API 요청에 대한 Method 활용
+  * 데이터 삭제 기능
+  
+<b>아쉬운 점</b>
+  * JWT을 활용한 로그인 기능
+  * 데이터 수정기능
+  
 (민재)<br>
 배운 점 <br>
 
